@@ -18,15 +18,9 @@ h1{
   color: white;
   text-align: center;
 }
-h2{
+
+.message{
   color: white;
-  text-align: center;
-}
-#message{
-  color: white;
-}
-.stripe{
-  background-color: white;
-  height: 30px;
+  display: block;
   text-align: center;
 }

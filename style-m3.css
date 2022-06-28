@@ -5,6 +5,7 @@
   padding-bottom:30% ;
   background-color: burlywood;
   margin: 20px;
+  border-radius: 30px;
 }
 .container{
   width: 600px;
@@ -20,7 +21,16 @@ h1{
 }
 
 .message{
-  color: white;
-  display: block;
+  color:black;
   text-align: center;
+  background-color: white;
+  display: block;
+  height:20px;
+
+}
+#stripe{
+height:30px;
+background-color: white;
+text-align: center;
+
 }

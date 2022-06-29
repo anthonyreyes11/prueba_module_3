@@ -1,8 +1,8 @@
-.square{
+.square {
   float: left;
   width: 30%;
   height: 0;
-  padding-bottom:30% ;
+  padding-bottom: 30%;
   background-color: burlywood;
   margin: 20px;
   border-radius: 30px;
@@ -10,32 +10,37 @@
   -webkit-transition: background 0.7s;
   -moz-transition: background 0.7s;
 }
-.container{
+
+.container {
   width: 600px;
   margin: 0 auto;
-  
+
 }
-body{
+
+body {
   background-color: #232323;
 }
-h1{
+
+h1 {
   color: white;
   text-align: center;
 }
 
-.message{
-  color:black;
+.message {
+  color: black;
   text-align: center;
   background-color: white;
   display: block;
-  height:20px;
+  height: 20px;
 
 }
-#stripe{
-height:30px;
-background-color: white;
-text-align: center;
+
+#stripe {
+  height: 30px;
+  background-color: white;
+  text-align: center;
 }
+
 button {
   border: none;
   background: none;

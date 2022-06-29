@@ -1,39 +1,93 @@
 // ETIQUETAS HTML
+let numberOfSquares = 6;
+let colors = generateRandomColors(numberOfSquares);
 const squares = document.querySelectorAll(".square");
-const span = document.querySelector("#colorDisplay");
-const resetButton = document.querySelector("#reset");
-const easyBtn = document.querySelector("#easyBtn");
-const hardBtn = document.querySelector("#hardBtn");
-const messageDisplay = document.querySelector(".message");
-const numSquares = 6;
+let span = document.querySelector("#colorDisplay");
+let resetButton = document.querySelector("#reset");
+let easyBtn = document.querySelector("#easyBtn");
+let hardBtn = document.querySelector("#hardBtn");
+let messageDisplay = document.querySelector(".message");
+let pickedColor = pickColor();
+span.textContent = pickedColor;
+let h1 = document.querySelector('h1');
+
+// Orden de ejercicio - Botones -> Funciones -> For
+
+//BOTONES 
+
+//Boton Easy
+easyBtn.addEventListener('click', function () {
+  easyBtn.classList.add('selected');
+  hardBtn.classList.remove('selected');
+  numberOfSquares = 3;
+  colors = generateRandomColors(numberOfSquares);
+  pickedColor = pickColor();
+  span.innerHTML = pickedColor;
+  for (let i = 0; i < squares.length; i++) {
+    if (colors[i]) {
+      squares[i].style.background = colors[i];
+    } else {
+      squares[i].style.display = "none";
+    }
+  }
+})
+//Boton Hard
+hardBtn.addEventListener('click', function () {
+  hardBtn.classList.add('selected');
+  easyBtn.classList.remove('selected');
+  numberOfSquares = 6;
+  colors = generateRandomColors(numberOfSquares);
+  pickedColor = pickColor();
+  span.innerHTML = pickedColor;
+  for (let i = 0; i < squares.length; i++) {
+
+    squares[i].style.background = colors[i];
+
+    squares[i].style.display = "block";
+
+  }
+})
+
+//Boton Reset
+resetButton.addEventListener("click", function () {
+  location.reload();
+});
 
 
-
-
-// VARIABLES
-//let colores = ["rgb(240, 14, 128)", "rgb(40, 164, 12)", "rgb(20, 114, 158)", "rgb(10, 14, 12)", "rgb(2, 194, 128)", "rgb(240, 149, 128)"];
-const colors = generateRandomColors(numSquares);
-
-
-function changeColors(colors) {
-  for (var i = 0; i < squares.length; i++) {
-    squares[i].style.background = colors;
+//Funciones
+function changeColors(color) {
+  for (let i = 0; i < squares.length; i++) {
+    squares[i].style.background = color;
   };
 }
 
-// funciones
 function pickColor() {
   return colors[Math.floor(colors.length * Math.random())]
 };
-const pickedColor = pickColor();
 
-
-function generateRandomColors(num) {
-  const arr = []
-  for (i = 0; i < num; i++) {
-    arr.push(randomColor())
+//GENERANDO COLOR ALEATORIO
+function generateRandomColors(numberOfSquares) {
+  let colors = []
+  for (i = 0; i < numberOfSquares; i++) {
+    colors.push(randomColor())
   }
-  return arr;
+  return colors;
+};
+
+function randomColor() {
+  const r = Math.floor(Math.random() * 256)
+  const g = Math.floor(Math.random() * 256)
+  const b = Math.floor(Math.random() * 256)
+  return "rgb(" + r + ", " + g + ", " + b + ")";
+};
+
+//Comienzo ciclos FOR LOOP 
+for (let i = 0; i < numberOfSquares; i++) {
+  if (colors[i]) {
+    squares[i].style.background = colors[i];
+  } else {
+    squares[i].style.display = "none";
+  }
 };
 
 for (let i = 0; i < colors.length; i++) {
@@ -45,42 +99,12 @@ for (let i = 0; i < colors.length; i++) {
     if (clickedColor === pickedColor) {
 
       changeColors(clickedColor);
-      span.style.backgroundColor = clickedColor;
-      messageDisplay.textContent = "Eres Seco!";
+      h1.style.color = clickedColor;
+      messageDisplay.textContent = "Correcto!";
+      resetButton.textContent = "Play Again?"
     } else {
       this.style.background = "#232323";
       messageDisplay.textContent = "Intentalo de nuevo!";
     }
   })
 };
-
-resetButton.addEventListener("click", function () {
-  location.reload();
-});
-
-// boton hard === boton reset
-hardBtn.addEventListener("click", function(){
-  console.log('funcionando');
-  messageDisplay.textContent = "";
-  easyBtn.classList.remove('#easyBtn');
-  hardBtn.classList.add('elegido');
-
-  for(var i = 0; i < squares.length; i++) {
-    squares[i].style.background = colors[i];
-    squares[i].style.display = "block";
-}
-
-});
-
-
-function randomColor() {
-  const r = Math.floor(Math.random() * 256)
-  const g = Math.floor(Math.random() * 256)
-  const b = Math.floor(Math.random() * 256)
-  return "rgb(" + r + ", " + g + ", " + b + ")";
-};
-
-span.textContent = pickedColor;
-
-
-

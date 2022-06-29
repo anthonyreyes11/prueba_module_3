@@ -6,6 +6,9 @@
   background-color: burlywood;
   margin: 20px;
   border-radius: 30px;
+  transition: background 0.7s;
+  -webkit-transition: background 0.7s;
+  -moz-transition: background 0.7s;
 }
 .container{
   width: 600px;
@@ -32,5 +35,19 @@ h1{
 height:30px;
 background-color: white;
 text-align: center;
-
+}
+button {
+  border: none;
+  background: none;
+  text-transform: uppercase;
+  font-family: 'Courier New', Courier, monospace;
+  height: 100%;
+  font-weight: 700;
+  color: rgb(42, 142, 209);
+  letter-spacing: 2px;
+  font-size: inherit;
+  transition: all 0.8s;
+  -webkit-transition: all 0.8s;
+  -moz-transition: all 0.8s;
+  outline: none;
 }
